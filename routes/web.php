@@ -2,8 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth;
+use App\Http\Controllers;
+use App\Http\Controllers\PostsController;
+use App\Http\Controllers\BlogsController;
 use App\Models\User;
-use Illuminate\Support\Facades\Auth as Loged;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,24 +18,9 @@ use Illuminate\Support\Facades\Auth as Loged;
 |
 */
 
-Route::get('/', function (Request $request) {
+Route::get('/', [PostsController::class, 'getPosts'])->name('main');
 
-    if(Loged::check()) {
-        
-        return view('main', ['name' => Loged::user()->name]);
-
-    }
-    
-    return view('main');
-
-})->name('main');
-
-Route::get('blogs', function (Request $request) {
-    $data = [
-        'name' => Loged::user()->name,
-    ];
-    return view('blogs', $data);
-})->name('blogs')->middleware('auth');
+Route::get('blogs', [BlogsController::class, 'getBlogs'])->name('blogs');
 
 Route::get('/register', [Auth\RegisterController::class, 'show'])->name('register');
 Route::post('/register', [Auth\RegisterController::class, 'store']);

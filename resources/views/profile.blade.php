@@ -7,7 +7,7 @@
     
     <div class="col-8">
 
-        @foreach ($blogs as $blog)
+        @foreach ($user->blogs as $blog)
         <div class="card rounded-3 shadow-sm mb-3">
             <div class="card-header py-3">
                 <h4 class="my-0 fw-normal">{{ $blog->name}}</h4>
@@ -21,10 +21,6 @@
                     @endforeach                    
                 </ul>
             </div>
-            <div class="card-footer py-3">
-                <h6 class="my-0 fw-normal">{{ $blog->user->name }}
-                <small>@datetime($blog->created_at)</small>
-            </div>
         </div>
         @endforeach
 
@@ -32,4 +28,4 @@
 </div>
 </div>
    
-@endsection 
+@endsection

@@ -26,16 +26,16 @@
         <div>
             <ul class = "nav">
                 <li><a href="{{ route('main') }}" class="nav-link px-2 link-secondary">Главная</a></li>
-                <li><a href={{ route('blogs') }} class="nav-link px-2 link-dark">Блоги</a></li>
-                <li><a href="#" class="nav-link px-2 link-dark">Пользователи</a></li>
+                <li><a href="{{ route('blogs') }}" class="nav-link px-2 link-dark">Блоги</a></li>
+                <li><a href="{{ route('users') }}" class="nav-link px-2 link-dark">Пользователи</a></li>
             </ul>
         </div>
 
         <div class="mx-4">
 
             @guest
-            <a href="{{ route('login')}} " class="btn btn-outline-primary me-2" role="button">Login</a>            
-            <a href="{{ route('register')}} " class="btn btn-primary" role="button">Register</a>
+            <a href="{{ route('login')}}" class="btn btn-outline-primary me-2" role="button">Login</a>            
+            <a href="{{ route('register')}}" class="btn btn-primary" role="button">Register</a>
             @endguest
 
             @auth
@@ -47,9 +47,9 @@
                 </svg>                
             </a>
             <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
-                <li><a class="dropdown-item" href="#">Профиль</a></li>
+                <li><a class="dropdown-item" href="{{ route('profile')}}">Профиль</a></li>
                 <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href={{ route('logout') }}>Выход</a></li>
+                <li><a class="dropdown-item" href="{{ route('logout') }}">Выход</a></li>
             </ul>
             @endauth
                         

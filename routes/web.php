@@ -5,7 +5,8 @@ use App\Http\Controllers\Auth;
 use App\Http\Controllers;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\BlogsController;
-use App\Models\User;
+use App\Http\Controllers\UsersController;
+// use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +22,13 @@ use App\Models\User;
 Route::get('/', [PostsController::class, 'getPosts'])->name('main');
 
 Route::get('blogs', [BlogsController::class, 'getBlogs'])->name('blogs');
+// Route::get('blog/{id}', [BlogsController::class, 'getBlog']);
+
+// Route::get('blog/{id}/posts', [PostsController::class, 'getPostsFromBlog']);
+// Route::get('blog/{id}/post/{id}', [PostsController::class, 'getPost']);
+
+Route::get('users', [UsersController::class, 'getUsers'])->name('users');
+Route::get('profile', [UsersController::class, 'getProfile'])->name('profile');
 
 Route::get('/register', [Auth\RegisterController::class, 'show'])->name('register');
 Route::post('/register', [Auth\RegisterController::class, 'store']);

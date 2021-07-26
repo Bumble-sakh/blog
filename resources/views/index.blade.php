@@ -34,8 +34,8 @@
         <div class="mx-4">
 
             @guest
-            <a href="{{ route('login')}}" class="btn btn-outline-primary me-2" role="button">Login</a>            
-            <a href="{{ route('register')}}" class="btn btn-primary" role="button">Register</a>
+            <a href="{{ route('login')}}" class="btn btn-outline-primary me-2" role="button">Войти</a>            
+            <a href="{{ route('register')}}" class="btn btn-primary" role="button">Регистрация</a>
             @endguest
 
             @auth

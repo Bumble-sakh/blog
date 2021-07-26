@@ -28,7 +28,7 @@ Route::get('blogs', [BlogsController::class, 'getBlogs'])->name('blogs');
 // Route::get('blog/{id}/post/{id}', [PostsController::class, 'getPost']);
 
 Route::get('users', [UsersController::class, 'getUsers'])->name('users');
-Route::get('profile', [UsersController::class, 'getProfile'])->name('profile');
+Route::get('profile', [UsersController::class, 'getProfile'])->name('profile')->middleware('auth');
 
 Route::get('/register', [Auth\RegisterController::class, 'show'])->name('register');
 Route::post('/register', [Auth\RegisterController::class, 'store']);

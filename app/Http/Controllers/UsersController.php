@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Illuminate\Support\Arr;
 
@@ -34,11 +34,7 @@ class UsersController extends Controller
 
         $data = Arr::add($data, 'user', $user[0]);
 
-        if(Auth::check()) {
-
-            $data = Arr::add($data, 'name', Auth::user()->name);
-
-        }
+        $data = Arr::add($data, 'name', Auth::user()->name);
 
         return view('profile', $data);
 

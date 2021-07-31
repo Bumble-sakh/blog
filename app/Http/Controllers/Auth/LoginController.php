@@ -19,9 +19,11 @@ class LoginController extends Controller
 
         //end
 
+        $remember = $request->has('remember');
+        
         $credentials = $request->only('email', 'password');
 
-        if (Auth::attempt($credentials)) {
+        if (Auth::attempt($credentials, $remember)) {
             $request->session()->regenerate();
 
             return redirect()->intended('profile');

@@ -22,7 +22,10 @@ use App\Http\Controllers\UsersController;
 Route::get('/', [PostsController::class, 'getPosts'])->name('main');
 
 Route::get('blogs', [BlogsController::class, 'getBlogs'])->name('blogs');
-// Route::get('blog/{id}', [BlogsController::class, 'getBlog']);
+Route::get('blog/{id}', [BlogsController::class, 'getBlog'])->middleware('auth');
+Route::get('blog/add', [BlogsController::class, 'addBlog'])->name('blog_add')->middleware('auth');
+Route::get('blog/edit/{id}', [BlogsController::class, 'editBlog'])->name('blog_edit')->middleware('auth');
+Route::get('blog/delete/{id}', [BlogsController::class, 'deleteBlog'])->name('blog_delete')->middleware('auth');
 
 // Route::get('blog/{id}/posts', [PostsController::class, 'getPostsFromBlog']);
 // Route::get('blog/{id}/post/{id}', [PostsController::class, 'getPost']);

@@ -1,3 +1,15 @@
 .bi {
-    color: rgb(0, 90, 252);
+    color: #0d6efd;
+}
+
+.bi-box {
+    font-size: 64px;
+}
+
+.bi-emoji-smile {
+    font-size: 32px;
+}
+
+.btn:hover .bi {
+    color: #fff;
 }

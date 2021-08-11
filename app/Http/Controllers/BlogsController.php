@@ -26,4 +26,24 @@ class BlogsController extends Controller
         return view('blogs', $data);
 
     }
+
+    public function getBlog() {
+
+        $id = 1;
+
+        $data = [];
+
+        $data = Arr::add($data, 'blog', Blog::where('id', $id)->first());       
+
+        if(Auth::check()) {
+
+            $data = Arr::add($data, 'name', Auth::user()->name);
+
+        }
+
+        return view('blog', $data);
+
+    }
+
+
 }

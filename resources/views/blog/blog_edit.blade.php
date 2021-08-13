@@ -31,7 +31,7 @@
                                 <textarea id="blog_description" rows="5" class="form-control" name="blog_description" required placeholder="Описание блога">{{ $blog_description }}</textarea>
                             </div>
                         </div>
-                        {{-- <input type="hidden" name="user_id" value="{{ $user_id }}"> --}}
+
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4 d-flex flex-row-reverse">
                                 <button type="submit" class="btn btn-primary">

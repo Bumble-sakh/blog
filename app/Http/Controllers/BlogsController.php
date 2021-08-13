@@ -132,14 +132,13 @@ class BlogsController extends Controller
 
         }
 
+        $blog->posts()->delete();
         $blog->delete();
-
-        $data = Arr::add($data, 'blog_name', $blog->name);
-        $data = Arr::add($data, 'blog_description', $blog->description);
 
         $data = Arr::add($data, 'message', 'Блог ' . $blog->name . ' удален!');
 
-        return view('blog.blog_delete', $data);
+        // return view('blog.blog_delete', $data);
+        return back();
 
     }
 

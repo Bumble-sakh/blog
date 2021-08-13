@@ -22,8 +22,6 @@ use App\Http\Controllers\UsersController;
 Route::get('/', [PostsController::class, 'getPosts'])->name('main');
 
 Route::get('blogs', [BlogsController::class, 'getBlogs'])->name('blogs');
-
-
 Route::get('blog/add', [BlogsController::class, 'addBlog'])->name('blog_add')->middleware('auth');
 Route::post('blog/add', [BlogsController::class, 'addBlog'])->middleware('auth');
 Route::get('blog/edit/{id}', [BlogsController::class, 'editBlog'])->name('blog_edit')->middleware('auth');
@@ -31,9 +29,13 @@ Route::post('blog/edit/{id}', [BlogsController::class, 'editBlog'])->middleware(
 Route::get('blog/delete/{id}', [BlogsController::class, 'deleteBlog'])->name('blog_delete')->middleware('auth');
 Route::get('blog/{id}', [BlogsController::class, 'getBlog'])->name('blog')->middleware('auth');
 
-Route::get('post/add/{blogId}', [BlogsController::class, 'addBlog'])->name('post_add')->middleware('auth');
-Route::get('post/edit/{id}', [BlogsController::class, 'editBlog'])->name('post_edit')->middleware('auth');
-Route::get('post/delete/{id}', [BlogsController::class, 'deleteBlog'])->name('post_delete')->middleware('auth');
+// Route::get('posts', [PostsController::class, 'getPosts'])->name('posts');
+Route::get('post/add/{blogId}', [PostsController::class, 'addPost'])->name('post_add')->middleware('auth');
+Route::post('post/add/{blogId}', [PostsController::class, 'addPost'])->middleware('auth');
+Route::get('post/edit/{id}', [PostsController::class, 'editPost'])->name('post_edit')->middleware('auth');
+Route::post('post/edit/{id}', [PostsController::class, 'editPost'])->middleware('auth');
+Route::get('post/delete/{id}', [PostsController::class, 'deletePost'])->name('post_delete')->middleware('auth');
+Route::get('post/{id}', [PostsController::class, 'getPost'])->name('post')->middleware('auth');
 
 // Route::get('blog/{id}/posts', [PostsController::class, 'getPostsFromBlog']);
 // Route::get('blog/{id}/post/{id}', [PostsController::class, 'getPost']);

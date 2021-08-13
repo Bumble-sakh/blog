@@ -10,6 +10,7 @@ use Illuminate\Support\Arr;
 
 class UsersController extends Controller
 {
+
     public function getUsers() {
 
         $data = [];
@@ -26,11 +27,15 @@ class UsersController extends Controller
 
     }
 
-    public function getProfile() {
+    public function getProfile($id = null) {
 
         $data = [];
 
-        $user = User::where('id', Auth::user()->id)->get();
+        if($id == null) {
+            $user = User::where('id', Auth::user()->id)->get();
+        } else {
+            $user = User::where('id', $id)->get();
+        }        
 
         $data = Arr::add($data, 'user', $user[0]);
 

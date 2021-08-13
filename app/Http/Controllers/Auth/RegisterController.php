@@ -7,10 +7,12 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
+use Illuminate\Support\Facades\Auth;
+
 class RegisterController extends Controller
 {
     public function show() {
-        return view('register');
+        return view('auth.register');
     }
 
     public function store(Request $request) {
@@ -22,10 +24,8 @@ class RegisterController extends Controller
         $user->password = Hash::make($request->password);
         $user->email = $request->email;
         $user->save();
-        //Login
 
-        //
-        //Redirect
-        // return view('home');
+        Auth::login($user);
+        return redirect()->intended('profile');
     }
 }

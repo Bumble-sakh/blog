@@ -17,12 +17,12 @@
                 <h3 class="my-0 me-2 mb-5">{{ $blog->description }}</h3>
                 <div class=" d-flex flex-row justify-content-between">
                     <span class="pt-2">Всего постов: {{ $blog->posts->count() }}</span>
-                    <a href="{{ route('main') }}" class="btn btn-outline-primary" role="button">
-                        <i class="bi bi-clipboard-plus"></i><span> Add post</span>
+                    @can('blogAuthor', $blog)
+                    <a href="{{ route('post_add', $blog->id) }}" class="btn btn-outline-primary btn-sm" role="button">
+                        <i class="bi bi-file-earmark-plus"></i><span> Add post</span>
                     </a>
+                    @endcan
                 </div>
-                
-                
             </div>
 
             <div class="card-footer py-3 d-flex flex-row justify-content-between">
@@ -30,15 +30,16 @@
                     <h6 class="my-0 fw-normal">{{ $blog->user->name }}
                     <small>@datetime($blog->created_at)</small>
                 </div>
-                <div class="">
+                @can('blogAuthor', $blog)
+                <div>
                     <a href="{{ route('blog_edit', $blog->id) }}" class="btn btn-outline-primary" role="button">
                         <i class="bi bi-pencil"></i><span> Edit blog</span>
                     </a>
-                    <a href="{{ route('blog_delete', $blog->id) }}" class="btn btn-outline-primary" role="button">
-                        <i class="bi bi-trash"></i><span> Delete blog</span>
+                    <a href="{{ route('blog_delete', $blog->id) }}" class="btn btn-outline-danger" role="button">
+                        <i class="bi bi-trash icon_red"></i><span> Delete blog</span>
                     </a>
                 </div>                
-
+                @endcan
             </div>
         </div>
         
@@ -49,12 +50,16 @@
                 <small class="my-0 me-2">{{ $post->blog->user->name }} @datetime($post->created_at) </small>  
             </div>
             <div class="card-body">
-                <p class="list-unstyled mt-3 mb-4">
+                <div class="list-unstyled mt-3 mb-4">
                     {{ $post->text }}
-                </p>
-                <a href="{{ route('blog_edit', $blog->id) }}" class="btn btn-outline-primary" role="button">
-                    <i class="bi bi-pencil"></i><span> Edit blog</span>
-                </a>
+                </div>
+                @can('postAuthor', $post)
+                <div class="d-flex flex-row-reverse">
+                    <a href="{{ route('blog_edit', $blog->id) }}" class="btn btn-outline-primary btn-sm" role="button">
+                        <i class="bi bi-file-earmark-code"></i><span> Edit post</span>
+                    </a>
+                </div>
+                @endcan
             </div>
             <div class="card-footer py-3">
                 <h6 class="my-0 fw-normal">
